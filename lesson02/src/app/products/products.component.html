@@ -1,0 +1,8 @@
+<h1>products component</h1>
+<div class="products">
+  <product *ngFor="let prod of products"
+           [product]="prod"
+           (infoEvent)="onProductInfoClick($event)"
+           (detailEvent)="onProductDetailClick()"
+           (deleteEvent)="onProductDelete($event)"></product>
+</div>
