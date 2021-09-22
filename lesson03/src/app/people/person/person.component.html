@@ -1,0 +1,10 @@
+<div class="person" [class.disabled]="!person.active">
+  <h3 #h3Title hover>{{ person.lastName }} {{ person.firstName }} {{ person.birth }} {{ person.sex }}</h3>
+  <div *ngIf="person.passport">
+    <h4>Passport exists</h4>
+    <div>
+      {{person.passport.series}} {{person.passport.num}}
+    </div>
+  </div>
+  <button (click)="onDemoClick()">Demo</button>
+</div>
