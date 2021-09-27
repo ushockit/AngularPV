@@ -1,0 +1,37 @@
+<h1>Create new person</h1>
+<form class="create-form" [formGroup]="form">
+  <div class="mb-3">
+    <label for="inputFirstName" class="form-label">First name</label>
+    <input type="text" class="form-control" formControlName="firstName" id="inputFirstName" aria-describedby="emailHelp">
+    <div *ngIf="!firstNameControl.valid" class="form-text text-danger">Invalid</div>
+  </div>
+  <div class="mb-3">
+    <label for="inputLastName" class="form-label">Last name</label>
+    <input type="text" class="form-control" formControlName="lastName" id="inputLastName">
+    <div *ngIf="form.controls['lastName'].errors">
+      <div *ngIf="form.controls['lastName'].errors.required" class="form-text text-danger">Field is required</div>
+      <div *ngIf="form.controls['lastName'].errors.minlength" class="form-text text-danger">Min length</div>
+      <div *ngIf="form.controls['lastName'].errors.maxlength" class="form-text text-danger">Max length</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="inputBirth" class="form-label">Birth</label>
+    <input type="date" class="form-control" formControlName="birth" id="inputBirth">
+  </div>
+  <div class="mb-3">
+    <div>Tags ({{tagsControls.controls.length}}) - <button (click)="addTag()">Add</button></div>
+    <div *ngFor="let tagCtrl of tagsControls.controls;let idx = index" formArrayName="tags">
+      <input type="text" class="form-control" formControlName="{{idx}}">
+      <button class="btn btn-danger" (click)="removeTag(idx)">Remove</button>
+      <div *ngIf="!tagsControls.controls[idx].valid" class="form-text text-danger">Invalid</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <select formControlName="position">
+      <option value="" disabled>Choose a position</option>
+      <option *ngFor="let pos of positions" [ngValue]="pos">{{pos}}</option>
+    </select>
+  </div>
+  <button type="submit" [disabled]="!form.valid" (click)="onCreatePersonClick()" class="btn btn-primary">Create</button>
+  <button (click)="demo()">Demo</button>
+</form>

@@ -1,0 +1,5 @@
+<h1>People component</h1>
+<create-person (createNewPersonEvent)="onCreatePerson($event)"></create-person>
+<div class="people">
+  <app-people-person *ngFor="let prsn of people" [person]="prsn"></app-people-person>
+</div>
