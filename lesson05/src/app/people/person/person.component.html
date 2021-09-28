@@ -1,0 +1,11 @@
+<div class="person">
+  <div>First name: {{person.firstName}}</div>
+  <div>Last name: {{person.lastName}}</div>
+  <div>Position: {{person.position}}</div>
+  <div>Birth: {{person.birth | date:'medium'}}</div>
+  <div *ngIf="person.tags">
+    <ul>
+      <li *ngFor="let tag of person.tags">{{tag}}</li>
+    </ul>
+  </div>
+</div>

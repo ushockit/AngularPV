@@ -1,0 +1,16 @@
+<h1>Login component</h1>
+<form class="login-form" [formGroup]="form">
+  <div class="mb-3">
+    <label for="inputLogin" class="form-label">Login</label>
+    <input type="text" class="form-control" formControlName="login" id="inputLogin">
+  </div>
+  <div class="mb-3">
+    <label for="inputPassword" class="form-label">Password</label>
+    <input type="text" class="form-control" formControlName="password" id="inputPassword">
+  </div>
+  <div class="mb-3">
+    <label for="inputConfirmPassword" class="form-label">Confirm password</label>
+    <input type="text" class="form-control" formControlName="confirmPassword" id="inputConfirmPassword">
+  </div>
+  <button (click)="onLoginClick()">Login</button>
+</form>
