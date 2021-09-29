@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm">
+  <h4 class="text-danger">{{message}}</h4>
+  <div class="mb-3">
+    <label for="inputEmail" class="form-label">Email</label>
+    <input type="text" class="form-control" id="inputEmail" formControlName="email">
+<!--    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+  </div>
+  <div class="mb-3">
+    <label for="inputPassword" class="form-label">Password</label>
+    <input type="text" class="form-control" id="inputPassword" formControlName="password">
+  </div>
+  <div class="mb-3">
+    <label for="inputConfirmPassword" class="form-label">Confirm password</label>
+    <input type="text" class="form-control" id="inputConfirmPassword" formControlName="confirmPassword">
+    <div *ngIf="loginForm.controls['confirmPassword'].errors" class="form-text">
+      <span *ngIf="loginForm.controls['confirmPassword'].errors['passwordMatch']" class="text-danger">Пароли не совпадают</span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid" (click)="onLoginClick()">Log In</button>
+</form>
