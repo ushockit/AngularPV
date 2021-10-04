@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 
 
 @Component({
@@ -10,13 +18,13 @@ import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, 
 export class LoginComponent {
   form: FormGroup;
 
-  constructor() {
-    this.form = new FormGroup({
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
       'login': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.required),
       'confirmPassword': new FormControl('', Validators.required)
     }, {
-      validators: [this.confirmPasswordValidator]
+      validator: this.confirmPasswordValidator
     });
   }
 
@@ -24,10 +32,11 @@ export class LoginComponent {
     console.log(this.form);
   }
 
-  confirmPasswordValidator(): ValidatorFn {
-    return (group: AbstractControl): ValidationErrors | null => {
+  confirmPasswordValidator(p: FormGroup) {
+    console.log(p);
+    return (group: FormGroup) => {
+      console.log('validator')
       console.log(group);
-      return {};
     };
   }
 }
