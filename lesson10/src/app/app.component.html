@@ -1,0 +1,18 @@
+<button (click)="demoPostQuery()">Demo post query</button>
+
+<ul *ngIf="posts$ | async as posts; else loading">
+  <li *ngFor="let post of posts;">
+    {{post.title}}
+    <button (click)="postDetail(post.id)">Detail</button>
+  </li>
+</ul>
+
+<div *ngIf="detailInfoOfPost$ | async as detailPostInfo; else loading">
+  <h1>Info</h1>
+  <div>Id = {{detailPostInfo.id}}</div>
+  <div>User id = {{detailPostInfo.userId}}</div>
+  <div>Title = {{detailPostInfo.title}}</div>
+  <div>Body = {{detailPostInfo.body}}</div>
+</div>
+
+<ng-template #loading>Loading...</ng-template>
