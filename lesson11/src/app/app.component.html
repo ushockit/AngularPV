@@ -1,0 +1,16 @@
+<form [formGroup]=form>
+  <input type="text" formControlName="search"/>
+</form>
+
+<ng-container *ngIf="searchResults$ | async as words">
+  <ul *ngIf="words.length > 0">
+    <li *ngFor="let w of words">{{w}}</li>
+  </ul>
+</ng-container>
+
+
+<button (click)="getPost(1)">Get post</button>
+
+<ul *ngIf="posts$ | async as posts">
+  <li *ngFor="let post of posts">{{post.id}}</li>
+</ul>
