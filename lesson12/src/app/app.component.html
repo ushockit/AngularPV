@@ -1,0 +1,8 @@
+<div *ngIf="loading$ | async" class="loading">
+  <img width="200" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
+</div>
+
+<button (click)="demo()">Get</button>
+
+<button (click)="showLoader()">Show loader</button>
+<button (click)="hideLoader()">Hide loader</button>
