@@ -28,6 +28,12 @@ export class AuthenticationApiService {
         email,
         password,
         role
+      },
+      {
+        headers: {
+          'Authorization': 'Bearer token',
+
+        }
       }
     ).pipe(
       publishReplay(1),

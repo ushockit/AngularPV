@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Models.Gallery;
+using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
@@ -12,12 +14,18 @@ namespace WebAPI.Controllers
     [ApiController]
     public class GalleryController : ControllerBase
     {
+        GalleryService _galleryService;
+        public GalleryController(GalleryService galleryService)
+        {
+            _galleryService = galleryService;
+        }
+
         [HttpGet]
         [Route("photos")]
         [Authorize]
-        public IEnumerable<object> GetAllPhotos()
+        public IEnumerable<Photo> GetAllPhotos()
         {
-            return new object[5];
+            return _galleryService.GetAllPhotos();
         }
     }
 }

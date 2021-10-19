@@ -29,7 +29,7 @@ namespace WebAPI.Services
                     audience: AuthOptions.AUDIENCE,
                     notBefore: now,
                     claims: claimsIdentity.Claims,
-                    expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                    expires: now.Add(TimeSpan.FromHours(AuthOptions.LIFETIME)),
                     signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }

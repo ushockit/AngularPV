@@ -3,6 +3,8 @@ import {SharedModule} from "../shared.module";
 import {MainComponent} from "./main.component";
 import {RouterModule} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
+import {GalleryModule} from "./gallery/gallery.module";
+import {GalleryComponent} from "./gallery/gallery.component";
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import {HomeComponent} from "./home/home.component";
   ],
   imports: [
     SharedModule,
+    GalleryModule,
     RouterModule.forChild([
       {
         path: '',
@@ -19,6 +22,10 @@ import {HomeComponent} from "./home/home.component";
           {
             path: 'home',
             component: HomeComponent
+          },
+          {
+            path: 'gallery',
+            component: GalleryComponent
           }
         ]
       }

@@ -46,6 +46,7 @@ namespace WebAPI
                             ValidAudience = AuthOptions.AUDIENCE,
                             // будет ли валидироваться время существования
                             ValidateLifetime = true,
+                            ClockSkew = TimeSpan.Zero,
 
                             // установка ключа безопасности
                             IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
@@ -62,6 +63,8 @@ namespace WebAPI
             services.AddSingleton<MD5Service>();
             services.AddSingleton<JwtService>();
             services.AddTransient<UsersService>();
+            services.AddTransient<GalleryService>();
+            services.AddTransient<CommentsService>();
             services.AddCors();
         }
 

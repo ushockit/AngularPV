@@ -11,6 +11,8 @@ import {AppEnvironment} from "./shared/app-environment.interface";
 import { environment } from '../environments/environment';
 import {ApiServicesModule} from "./api/api-services.module";
 import {BrowserLocalStorage} from "./shared/storage/local-storage";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {QueryHttpInterceptor} from "./shared/http/query-http.interceptor";
 
 @NgModule({
   declarations: [
@@ -31,6 +33,11 @@ import {BrowserLocalStorage} from "./shared/storage/local-storage";
     {
       provide: AppEnvironment,
       useValue: environment
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: QueryHttpInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
