@@ -5,6 +5,7 @@ import {RouterModule} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {GalleryModule} from "./gallery/gallery.module";
 import {GalleryComponent} from "./gallery/gallery.component";
+import {PhotoEditComponent} from "./gallery/photo/photo-edit/photo-edit.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,11 @@ import {GalleryComponent} from "./gallery/gallery.component";
           },
           {
             path: 'gallery',
-            component: GalleryComponent
+            component: GalleryComponent,
+          },
+          {
+            path: 'edit/photo/:id',
+            component: PhotoEditComponent
           }
         ]
       }

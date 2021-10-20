@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Text</mat-label>
+    <input matInput placeholder="Enter text..." value="Sushi" formControlName="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>CreatedAt</mat-label>
+    <input matInput readonly value="Sushi" formControlName="createdAt">
+  </mat-form-field>
+
+  {{ demoChangeDetection() }}
+</form>

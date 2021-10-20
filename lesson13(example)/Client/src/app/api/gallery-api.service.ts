@@ -43,4 +43,19 @@ export class GalleryApiService {
       refCount()
     );
   }
+
+  getPhotoById(id: string): Observable<PhotoResponse> {
+    return this.http.get<PhotoResponse>(
+      [
+        this.appEnv.apiUrl,
+        'gallery',
+        'photo',
+        id
+      ].join('/'),
+      this.options
+    ).pipe(
+      publishReplay(1),
+      refCount()
+    );
+  }
 }

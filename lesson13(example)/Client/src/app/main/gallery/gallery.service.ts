@@ -9,7 +9,7 @@ export interface PhotoModelData {
   description: string;
   author: string;
   url: string;
-  comments: Comment[];
+  comments: CommentInterface[];
 }
 
 export interface Photo extends PhotoModelData {}
@@ -20,7 +20,7 @@ export class Photo {
   }
 }
 
-export interface Comment {
+export interface CommentInterface {
   id?: string;
   text: string;
   createdAt: Date;
@@ -36,11 +36,19 @@ export class GalleryService {
   getAllPhotos(): Observable<Photo[]> {
     return this.galleryService.getAllPhotos().pipe(
       map((photos: PhotoResponse[]) => {
-        return photos.map(p => {
+        return photos.map(photo => {
           // TODO: Factory
-          console.log(Object.assign(new Photo(), p));
-          return Object.assign(new Photo(), p);
+          return Object.assign(new Photo(), photo);
         })
+      })
+    );
+  }
+
+  getPhoto(id: string): Observable<Photo> {
+    return this.galleryService.getPhotoById(id).pipe(
+      map((photo: PhotoResponse) => {
+        // TODO: Factory
+        return Object.assign(new Photo(), photo);
       })
     );
   }

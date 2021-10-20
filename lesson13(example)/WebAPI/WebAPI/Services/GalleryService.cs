@@ -49,5 +49,10 @@ namespace WebAPI.Services
                 return photo;
             }).ToList();
         }
+
+        public Photo GetPhotoById(Guid id)
+        {
+            return photos.FirstOrDefault(p => p.Id.ToString().Equals(id.ToString()));
+        }
     }
 }

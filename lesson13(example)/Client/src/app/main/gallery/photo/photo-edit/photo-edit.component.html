@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="Enter title..." value="Sushi" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Url</mat-label>
+    <input matInput placeholder="Enter url..." value="Sushi" formControlName="url">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput placeholder="Enter description" formControlName="description"></textarea>
+  </mat-form-field>
+
+  <ng-container *ngIf="editPhoto && editPhoto.hasComments">
+<!--    <comment-edit *ngFor="let comment of editPhoto.comments" [comment]="comment"></comment-edit>-->
+    <comment-edit [comment]="editPhoto.comments[0]"></comment-edit>
+  </ng-container>
+
+  <button (click)="demo()">Demo</button>
+
+  <button mat-raised-button color="warn" [disabled]="!form.valid">Save</button>
+</form>

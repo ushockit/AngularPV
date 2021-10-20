@@ -27,5 +27,13 @@ namespace WebAPI.Controllers
         {
             return _galleryService.GetAllPhotos();
         }
+
+        [HttpGet]
+        [Route("photo/{id:guid}")]
+        [Authorize]
+        public Photo GetPhoto(Guid id)
+        {
+            return _galleryService.GetPhotoById(id);
+        }
     }
 }
